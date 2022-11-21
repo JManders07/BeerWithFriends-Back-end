@@ -27,5 +27,7 @@ namespace BeerWithFriendsCore
 
             return products;
         }
+
+        //test
     }
 }
