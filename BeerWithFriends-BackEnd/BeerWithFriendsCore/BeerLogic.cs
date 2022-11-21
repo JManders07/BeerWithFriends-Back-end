@@ -28,6 +28,6 @@ namespace BeerWithFriendsCore
             return products;
         }
 
-        //test
+        //te
     }
 }
