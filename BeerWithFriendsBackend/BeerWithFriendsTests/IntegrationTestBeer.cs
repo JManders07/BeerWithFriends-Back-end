@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BeerWithFriendsTests
 {
     [TestClass]
-    public class UnitTest1
+    public class IntegrationTestBeer
     {
 
         private BeerWithFriendsBackendContext _context;
@@ -42,7 +42,7 @@ namespace BeerWithFriendsTests
             _logic.NewBeer(beer1);
             _logic.NewBeer(beer2);
         }
-        
+
         [TestCleanup]
         public void TearDown()
         {
@@ -100,20 +100,5 @@ namespace BeerWithFriendsTests
             Assert.AreEqual(3, _logic.Beers().Count);
         }
 
-        [TestMethod]
-        public void TryCreate1BeerUnitTest()
-        {
-            var beer3 = new Beer
-            {
-                Name = "La chouffe",
-                Description = "Erg lekker",
-                AlcoholPercentage = 6
-            };
-
-
-            var text = _logic.NewBeer(beer3);
-
-            Assert.AreEqual("Succes", text);
-        }
     }
 }
