@@ -17,9 +17,32 @@ namespace BeerWithFriendsBackend.Logic
             return _beerData.Beers();
         }
 
-        public void NewBeer(Beer beer)
+        public string NewBeer(Beer beer)
         {
-            _beerData.NewBeer(beer);
+            if (CheckNegativeAlcoholPercentage(beer))
+            {
+                _beerData.NewBeer(beer);
+                return "Succes";
+            }
+            else
+            {
+                return "Not succeeded";
+            }
+            
+            
+
+        }
+
+        private bool CheckNegativeAlcoholPercentage(Beer beer)
+        {
+            if (beer.AlcoholPercentage < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
