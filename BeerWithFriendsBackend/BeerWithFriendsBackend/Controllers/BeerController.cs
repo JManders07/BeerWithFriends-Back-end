@@ -51,5 +51,17 @@ namespace BeerWithFriendsBackend.Controllers
             }
             return "";
         }
+
+        public void Test()
+        {
+            int i = 0;
+            i++;
+        }
+
+        public void Test2()
+        {
+            int i = 0;
+            i++;
+        }
     }
 }
