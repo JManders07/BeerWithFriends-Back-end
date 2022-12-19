@@ -132,13 +132,6 @@ namespace BeerWithFriendsBackend.Controllers
                 5
                 5
 
-                5
-                5
-                5
-
-                5
-                5
-                5
 
         }
     }
