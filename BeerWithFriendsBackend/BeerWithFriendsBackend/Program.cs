@@ -18,6 +18,9 @@ builder.Services.AddDbContext<BeerWithFriendsBackendContext>(options =>
 builder.Services.AddCors();
 builder.Services.AddTransient<BeerData>();
 builder.Services.AddTransient<BeerLogic>();
+
+builder.Services.AddTransient<ReviewData>();
+builder.Services.AddTransient<ReviewLogic>();
 // Add services to the container.
 
 builder.Services.AddControllers();

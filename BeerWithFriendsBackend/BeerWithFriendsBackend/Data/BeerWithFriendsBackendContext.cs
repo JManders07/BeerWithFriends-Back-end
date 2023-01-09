@@ -14,6 +14,8 @@ namespace BeerWithFriendsBackend.Data
         {
         }
 
-        public DbSet<BeerWithFriendsBackend.Models.Beer> Beer { get; set; } = default!;
+        public DbSet<Beer> Beer { get; set; } = default!;
+
+        public DbSet<Review> Review { get; set; }
     }
 }

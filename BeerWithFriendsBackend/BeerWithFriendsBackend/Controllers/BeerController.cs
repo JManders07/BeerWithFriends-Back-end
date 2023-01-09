@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using BeerWithFriendsBackend.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using BeerWithFriendsBackend.Models;
 using BeerWithFriendsBackend.Logic;
 
 namespace BeerWithFriendsBackend.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]/")]
     [ApiController]
     public class BeerController : Controller
     {
@@ -22,6 +15,7 @@ namespace BeerWithFriendsBackend.Controllers
             _beerLogic = beerlogic;
         }
 
+        [Route("[action]")]
         [HttpGet]
         public JsonResult Beers()
         {
@@ -31,6 +25,13 @@ namespace BeerWithFriendsBackend.Controllers
                 beers.Add(beer);
             }
             return Json(beers);
+        }
+
+        [HttpGet("{id:int}")]
+        public JsonResult Beer(int id)
+        {
+            Beer beer = _beerLogic.Beer(id);
+            return Json(beer);
         }
 
         [HttpPost]
@@ -50,6 +51,41 @@ namespace BeerWithFriendsBackend.Controllers
                 }
             }
             return "";
+        }
+
+        [HttpDelete("{id:int}")]
+        public string DeleteBeer(int id)
+        {
+            if (id != null)
+            {
+                try
+                {
+                    _beerLogic.DeleteBeer(id);
+                    return "Succeeded";
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return "";
+        }
+
+        [HttpPut("{id:int}")]
+        public string EditBeer(int id, [FromBody] Beer beer)
+        {
+            beer.Id = id;
+            try
+            {
+                _beerLogic.EditBeer(beer);
+                return "Succeeded";
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         
     }
