@@ -13,7 +13,7 @@ namespace BeerWithFriendsBackend.Data
 
         public List<Review> Reviews(int id)
         {
-            return _context.Review.Where(r => r.Id == id).ToList();
+            return _context.Review.Where(r => r.BeerId == id).ToList();
         }
 
         public void AddReview(Review review)
